@@ -8,7 +8,7 @@ const input = document.querySelector('input[type="number"]');
 const createBtn = document.querySelector("[data-create]");
 const destroyBtn = document.querySelector("[data-destroy]");
 const boxesContainer = document.querySelector("#boxes");
-
+const fragment = document.createDocumentFragment();
 createBtn.addEventListener("click", handleCreate);
 destroyBtn.addEventListener("click", destroyBoxes);
 
@@ -29,10 +29,11 @@ function createBoxes(amount) {
     box.style.width = `${size}px`;
     box.style.height = `${size}px`;
     box.style.backgroundColor = getRandomHexColor();
-    boxesContainer.appendChild(box);
+    fragment.appendChild(box);
   }
-}
 
+  boxesContainer.appendChild(fragment);
+}
 function destroyBoxes() {
   boxesContainer.innerHTML = "";
 }
